@@ -7,13 +7,12 @@ export function useDashBase() {
 
 function links(base: string) {
   return [
-    { to: base, label: 'Home', end: true },
+    { to: '/', label: 'Home', end: true },
+    { to: `${base}/combined`, label: 'Historical' },
     { to: `${base}/types`, label: 'Vehicle types' },
     { to: `${base}/mix`, label: 'Mix' },
-    { to: `${base}/income`, label: 'Income' },
     { to: `${base}/states`, label: 'States' },
-    { to: `${base}/outlook`, label: 'Outlook' },
-    { to: `${base}/energy`, label: 'Energy' },
+    { to: `${base}/prediction`, label: 'Prediction' },
   ]
 }
 

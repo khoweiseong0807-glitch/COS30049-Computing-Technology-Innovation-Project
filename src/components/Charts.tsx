@@ -10,16 +10,19 @@ type LineSeries = {
 export function LineChart({
   series,
   height = 240,
+  years = DASH_YEARS,
 }: {
   series: LineSeries[]
   height?: number
+  years?: readonly number[]
 }) {
   const width = 640
   const pad = { top: 18, right: 16, bottom: 36, left: 58 }
   const innerW = width - pad.left - pad.right
   const innerH = height - pad.top - pad.bottom
   const max = Math.max(...series.flatMap((s) => s.points), 1)
-  const x = (i: number) => pad.left + (i / (DASH_YEARS.length - 1)) * innerW
+  const x = (i: number) =>
+    years.length <= 1 ? pad.left + innerW / 2 : pad.left + (i / (years.length - 1)) * innerW
   const y = (v: number) => pad.top + innerH - (v / max) * innerH
 
   return (
@@ -42,7 +45,7 @@ export function LineChart({
           </g>
         )
       })}
-      {DASH_YEARS.map((year, i) => (
+      {years.map((year, i) => (
         <text key={year} x={x(i)} y={height - 10} className="chart-axis" textAnchor="middle">
           {year}
         </text>

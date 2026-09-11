@@ -1,10 +1,10 @@
 import { useMemo, useState, type FormEvent } from 'react'
-import { YEARLY_TOTALS } from '../data/jpj'
-import { BarChart } from '../components/Charts'
-import { formatInt } from '../components/ui'
-import { forecastTotals } from '../lib/ml'
+import { YEARLY_TOTALS } from '../../data/jpj'
+import { BarChart } from '../../components/Charts'
+import { formatInt } from '../../components/ui'
+import { forecastTotals } from '../../lib/ml'
 
-const BAR_COLORS = ['#2563eb', '#e24a1c', '#e6b800']
+const BAR_COLORS = ['#2563eb', '#dc4a26', '#d4a017']
 
 function scaleFrom(income: string, population: string) {
   const pop = Number(population) || 33_500_000
@@ -12,7 +12,7 @@ function scaleFrom(income: string, population: string) {
   return Math.max(0.55, Math.min(1.75, 0.6 * (pop / 33_500_000) + 0.4 * (inc / 5000)))
 }
 
-export default function FriendPrediction() {
+export default function DashPrediction() {
   const [income, setIncome] = useState('5000')
   const [population, setPopulation] = useState('33500000')
   const [applied, setApplied] = useState<{ income: string; population: string } | null>(
@@ -31,7 +31,7 @@ export default function FriendPrediction() {
   const bars = predicted.map((row, i) => ({
     label: String(row.year),
     value: row.units,
-    color: BAR_COLORS[i] ?? '#1e3a5f',
+    color: BAR_COLORS[i] ?? '#d4a017',
   }))
 
   const predict = (event: FormEvent) => {
@@ -40,23 +40,22 @@ export default function FriendPrediction() {
   }
 
   return (
-    <>
-      <section className="friend-intro">
-        <p>
-          Introduction and instructions on how to use the prediction
-          functionality. Type an average income (RM / month) and a population
-          figure, then press Predict. The bar chart shows the 2026–2028 MOT
-          baseline forecast scaled by those two inputs. Use Enlarge to read the
-          chart bigger, or Data table for the numbers. This is a prototype, not
-          a causal forecast.
+    <div className="dash">
+      <header className="page-head">
+        <p className="eyebrow">Prediction</p>
+        <h1>2026–2028 registration forecast</h1>
+        <p className="lede">
+          Enter average monthly income (RM) and population, then press Predict.
+          The bars scale the MOT trend baseline for 2026, 2027, and 2028. This
+          is a prototype sketch, not a causal forecast.
         </p>
-      </section>
+      </header>
 
-      <div className="friend-predict-layout">
-        <form className="friend-card friend-criteria" onSubmit={predict}>
+      <div className="dash-predict-layout">
+        <form className="dash-toolbar dash-toolbar-stack" onSubmit={predict}>
           <h2>Prediction criteria</h2>
-          <label>
-            Average income
+          <label className="dash-field">
+            Average income (RM / month)
             <input
               type="number"
               min={1000}
@@ -64,7 +63,7 @@ export default function FriendPrediction() {
               onChange={(e) => setIncome(e.target.value)}
             />
           </label>
-          <label>
+          <label className="dash-field">
             Population
             <input
               type="number"
@@ -73,16 +72,16 @@ export default function FriendPrediction() {
               onChange={(e) => setPopulation(e.target.value)}
             />
           </label>
-          <button className="friend-action friend-action-primary friend-predict-btn" type="submit">
+          <button className="btn dash-predict-btn" type="submit">
             Predict
           </button>
         </form>
 
-        <section className="friend-card">
-          <div className="friend-chart-head">
+        <section className="panel">
+          <div className="dash-chart-head">
             <h2>Predicted new registrations</h2>
             <button
-              className="friend-enlarge"
+              className="dash-enlarge"
               type="button"
               onClick={() => applied && setModal('chart')}
               disabled={!applied}
@@ -106,16 +105,16 @@ export default function FriendPrediction() {
               </p>
             </>
           ) : (
-            <p className="muted friend-predict-empty">
+            <p className="muted dash-predict-empty">
               Press Predict to draw the 2026, 2027, and 2028 bars.
             </p>
           )}
         </section>
       </div>
 
-      <div className="friend-actions" style={{ marginTop: '0.9rem' }}>
+      <div className="hero-actions">
         <button
-          className="friend-action"
+          className="btn ghost"
           type="button"
           onClick={() => applied && setModal('table')}
           disabled={!applied}
@@ -125,17 +124,22 @@ export default function FriendPrediction() {
       </div>
 
       {modal && applied && (
-        <div className="friend-overlay" role="dialog" aria-modal="true">
-          <div className="friend-modal">
-            <div className="friend-modal-head">
+        <div
+          className="dash-overlay"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setModal(null)}
+        >
+          <div className="dash-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="dash-chart-head">
               <h2>{modal === 'chart' ? 'Enlarged prediction chart' : 'Data table'}</h2>
-              <button className="friend-close" type="button" onClick={() => setModal(null)}>
+              <button className="btn ghost compact" type="button" onClick={() => setModal(null)}>
                 Close
               </button>
             </div>
             {modal === 'chart' && <BarChart items={bars} height={320} />}
             {modal === 'table' && (
-              <table className="friend-table">
+              <table>
                 <thead>
                   <tr>
                     <th>Year</th>
@@ -170,6 +174,6 @@ export default function FriendPrediction() {
           </div>
         </div>
       )}
-    </>
+    </div>
   )
 }

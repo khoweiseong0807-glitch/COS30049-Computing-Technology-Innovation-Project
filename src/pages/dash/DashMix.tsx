@@ -39,11 +39,12 @@ export default function DashMix() {
         <p className="eyebrow">Mix</p>
         <h1>Registration mix</h1>
         <p className="lede">
-          Bar chart and donut for one year. Search a class name in Malay or English.
+          Share of each vehicle class in a single MOT year. Search by English or
+          Malay name.
         </p>
       </header>
-      <form className="panel form dash-filters" onSubmit={(e) => e.preventDefault()}>
-        <label>
+      <form className="dash-toolbar" onSubmit={(e) => e.preventDefault()}>
+        <label className="dash-field">
           Year
           <select value={year} onChange={(e) => setYear(readYear(e.target.value))}>
             {DASH_YEARS.map((y) => (
@@ -53,7 +54,7 @@ export default function DashMix() {
             ))}
           </select>
         </label>
-        <label>
+        <label className="dash-field dash-field-grow">
           Search class
           <input
             value={query}

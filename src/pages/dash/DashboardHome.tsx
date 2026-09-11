@@ -6,45 +6,6 @@ import { StepFooter } from '../../components/StepFooter'
 import { mixForYear, seriesByClass } from '../../lib/dashboard'
 import { useDashBase } from './DashLayout'
 
-const PAGES = [
-  {
-    path: 'types',
-    kicker: 'Line chart',
-    title: 'Vehicle types over time',
-    copy: 'Multi-line chart of motorcar, motorcycle, and goods. Filter by year and category.',
-  },
-  {
-    path: 'mix',
-    kicker: 'Bar + donut',
-    title: 'Registration mix',
-    copy: 'See the share as bars and a donut. Filter by year and search a class.',
-  },
-  {
-    path: 'income',
-    kicker: 'Income filter',
-    title: 'Income bands',
-    copy: 'Split MOT counts by B40, M40, and T20 as a prototype sketch.',
-  },
-  {
-    path: 'states',
-    kicker: 'State bars',
-    title: 'States',
-    copy: 'Motokar vs motosikal by state. Filter Peninsula or East Malaysia.',
-  },
-  {
-    path: 'outlook',
-    kicker: 'Forecast',
-    title: 'Outlook',
-    copy: 'Baseline 2026–2028 forecast from the 2023–2025 totals.',
-  },
-  {
-    path: 'energy',
-    kicker: 'Energy',
-    title: 'Energy sketch',
-    copy: 'Litres, kWh, and CO₂ envelope for the new-vehicle mix.',
-  },
-]
-
 export default function DashboardHome({ withJourney = false }: { withJourney?: boolean }) {
   const base = useDashBase()
   const mix = mixForYear(2025, 'all')
@@ -58,21 +19,14 @@ export default function DashboardHome({ withJourney = false }: { withJourney?: b
 
   return (
     <div className="dash">
-      <section className="hero dash-hero">
-        <p className="eyebrow">Dashboard · Malaysian vehicle registration</p>
-        <h1>See the numbers and the charts</h1>
+      <section className="page-head dash-hero">
+        <p className="eyebrow">Dashboard</p>
+        <h1>MOT registrations at a glance</h1>
         <p className="lede hero-lede">
-          Line chart, bars, and donut for MOT 2025. Use the gold buttons for
-          more chart pages and filters.
+          New motor vehicles registered in Malaysia, 2023–2025. Open a chart
+          page from the menu to filter types, mix, states, or the 2026–2028
+          forecast.
         </p>
-        <div className="hero-actions">
-          <Link className="btn" to={`${base}/types`}>
-            Open vehicle types
-          </Link>
-          <Link className="btn ghost" to={`${base}/mix`}>
-            Open mix
-          </Link>
-        </div>
       </section>
 
       <section className="stat-grid">
@@ -123,21 +77,6 @@ export default function DashboardHome({ withJourney = false }: { withJourney?: b
           </Link>
         </section>
       </div>
-
-      <section className="portal-grid dash-hub">
-        {PAGES.map((page) => (
-          <article key={page.path} className="panel portal">
-            <span className="letter-lg">{page.kicker}</span>
-            <h2>{page.title}</h2>
-            <p className="muted">{page.copy}</p>
-            <div className="hero-actions">
-              <Link className="btn" to={`${base}/${page.path}`}>
-                Open this page
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
       {withJourney && (
         <StepFooter step="overview" nextLabel="Continue to classification" />
       )}

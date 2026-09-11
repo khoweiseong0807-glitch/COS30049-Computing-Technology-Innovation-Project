@@ -27,12 +27,12 @@ export default function DashTypes() {
         <p className="eyebrow">Vehicle types</p>
         <h1>Registration of vehicle types</h1>
         <p className="lede">
-          Multi-line chart of new MOT registrations, 2023–2025. Pick a category
-          to isolate one class.
+          New MOT registrations from 2023 to 2025. Choose a category to isolate
+          one class on the line chart.
         </p>
       </header>
-      <form className="panel form dash-filters" onSubmit={(e) => e.preventDefault()}>
-        <label>
+      <form className="dash-toolbar" onSubmit={(e) => e.preventDefault()}>
+        <label className="dash-field">
           Year highlight
           <select value={year} onChange={(e) => setYear(readYear(e.target.value))}>
             <option value="all">Show all years</option>
@@ -43,7 +43,7 @@ export default function DashTypes() {
             ))}
           </select>
         </label>
-        <label>
+        <label className="dash-field">
           Vehicle category
           <select
             value={category}

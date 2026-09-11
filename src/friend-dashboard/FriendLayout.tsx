@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom'
 import './friend.css'
 
 const LINKS = [
-  { to: '/friend', label: 'Home', end: true },
+  { to: '/', label: 'Home', end: true },
   { to: '/friend/historical', label: 'Historical Data', end: false },
   { to: '/friend/prediction', label: 'Prediction', end: false },
 ]
@@ -12,10 +12,10 @@ export default function FriendLayout() {
     <div className="friend-shell">
       <header className="friend-top">
         <div className="friend-brand">
-          <div>
+          <Link to="/" className="friend-brand-home">
             <strong>Malaysia Vehicle Registration</strong>
             <small>Teammate wireframe version · COS30049 prototype</small>
-          </div>
+          </Link>
           <Link className="friend-back" to="/">
             Back to JPJ Insight
           </Link>

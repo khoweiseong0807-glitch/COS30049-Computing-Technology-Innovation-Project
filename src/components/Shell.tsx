@@ -9,36 +9,41 @@ export function PublicShell() {
   return (
     <div className="site public-site">
       <header className="topbar">
-        <Link to="/" className="brand">
-          <span className="mark">JPJ</span>
-          <div>
-            <strong>JPJ Insight</strong>
-            <small>For owners and officers</small>
-          </div>
-        </Link>
-        <div className="top-actions">
-          <Link className="btn ghost" to="/dashboard">
-            Dashboard
+        <div className="topbar-inner">
+          <Link to="/" className="brand">
+            <span className="mark">JPJ</span>
+            <div>
+              <strong>JPJ Insight</strong>
+              <small>Malaysian vehicle registration</small>
+            </div>
           </Link>
-          {user ? (
-            <Link className="btn" to={homePath(user.role)}>
-              Continue
+          <div className="top-actions">
+            <Link className="btn ghost" to="/dashboard">
+              Dashboard
             </Link>
-          ) : (
-            <>
-              <Link className="btn ghost" to="/login?as=owner">
-                Log in
+            {user ? (
+              <Link className="btn" to={homePath(user.role)}>
+                Continue
               </Link>
-              <Link className="btn" to="/register?as=owner">
-                Get started
-              </Link>
-            </>
-          )}
+            ) : (
+              <>
+                <Link className="btn ghost" to="/login?as=owner">
+                  Log in
+                </Link>
+                <Link className="btn" to="/register?as=owner">
+                  Get started
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </header>
       <Outlet />
       <footer className="site-footer">
-        COS30049 prototype · Not an official JPJ website
+        <div className="topbar-inner footer-inner">
+          <strong>JPJ Insight</strong>
+          <span>COS30049 prototype · Not an official JPJ website</span>
+        </div>
       </footer>
     </div>
   )

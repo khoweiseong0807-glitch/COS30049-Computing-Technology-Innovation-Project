@@ -10,12 +10,10 @@ import DashLayout from './pages/dash/DashLayout'
 import DashboardHome from './pages/dash/DashboardHome'
 import DashTypes from './pages/dash/DashTypes'
 import DashMix from './pages/dash/DashMix'
-import DashIncome from './pages/dash/DashIncome'
 import DashStates from './pages/dash/DashStates'
-import DashOutlook from './pages/dash/DashOutlook'
-import DashEnergy from './pages/dash/DashEnergy'
+import DashCombined from './pages/dash/DashCombined'
+import DashPrediction from './pages/dash/DashPrediction'
 import FriendLayout from './friend-dashboard/FriendLayout'
-import FriendHome from './friend-dashboard/FriendHome'
 import FriendHistorical from './friend-dashboard/FriendHistorical'
 import FriendPrediction from './friend-dashboard/FriendPrediction'
 import Login from './pages/Login'
@@ -61,12 +59,11 @@ function dashboardPages(withJourney: boolean) {
   return (
     <>
       <Route index element={<DashboardHome withJourney={withJourney} />} />
+      <Route path="combined" element={<DashCombined />} />
       <Route path="types" element={<DashTypes />} />
       <Route path="mix" element={<DashMix />} />
-      <Route path="income" element={<DashIncome />} />
       <Route path="states" element={<DashStates />} />
-      <Route path="outlook" element={<DashOutlook />} />
-      <Route path="energy" element={<DashEnergy />} />
+      <Route path="prediction" element={<DashPrediction />} />
     </>
   )
 }
@@ -97,7 +94,7 @@ function AppRoutes() {
         />
       </Route>
       <Route path="/friend" element={<FriendLayout />}>
-        <Route index element={<FriendHome />} />
+        <Route index element={<Navigate to="/" replace />} />
         <Route path="historical" element={<FriendHistorical />} />
         <Route path="prediction" element={<FriendPrediction />} />
       </Route>

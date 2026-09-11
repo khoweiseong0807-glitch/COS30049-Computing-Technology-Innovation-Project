@@ -27,12 +27,12 @@ export default function DashStates() {
         <p className="eyebrow">States</p>
         <h1>Motokar and motosikal by state</h1>
         <p className="lede">
-          Illustrative state split. Filter Peninsula vs East Malaysia, then
-          focus on cars, motorcycles, or both.
+          Motokar and motosikal by state. Filter Peninsula or East Malaysia, then
+          focus on cars, motorcycles, or both. The state split is illustrative.
         </p>
       </header>
-      <form className="panel form dash-filters" onSubmit={(e) => e.preventDefault()}>
-        <label>
+      <form className="dash-toolbar" onSubmit={(e) => e.preventDefault()}>
+        <label className="dash-field">
           Region
           <select
             value={region}
@@ -43,7 +43,7 @@ export default function DashStates() {
             <option value="east">East Malaysia</option>
           </select>
         </label>
-        <label>
+        <label className="dash-field">
           Show
           <select value={kind} onChange={(e) => setKind(e.target.value as typeof kind)}>
             <option value="both">Cars and motorcycles</option>
