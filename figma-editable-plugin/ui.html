@@ -1,0 +1,29 @@
+<style>
+  body { font: 13px/1.4 Inter, Segoe UI, sans-serif; margin: 16px; color: #111; }
+  h1 { font-size: 14px; margin: 0 0 8px; }
+  p { margin: 0 0 12px; color: #444; }
+  button { width: 100%; padding: 12px; font-weight: 700; border: 0; border-radius: 8px; background: #d4a017; cursor: pointer; }
+  button:disabled { opacity: 0.6; cursor: wait; }
+  .err { color: #b42318; margin-top: 8px; white-space: pre-wrap; }
+</style>
+<h1>Build editable screens</h1>
+<p>This creates real Figma layers. Double-click any word or number to change it. Not a photo.</p>
+<button id="go">Create 7 editable pages</button>
+<div class="err" id="err"></div>
+<script>
+  const go = document.getElementById('go')
+  go.onclick = () => {
+    go.disabled = true
+    go.textContent = 'Building…'
+    parent.postMessage({ pluginMessage: { type: 'build' } }, '*')
+  }
+  onmessage = (e) => {
+    const msg = e.data.pluginMessage
+    if (!msg) return
+    if (msg.type === 'error') {
+      go.disabled = false
+      go.textContent = 'Try again'
+      document.getElementById('err').textContent = msg.text
+    }
+  }
+</script>
