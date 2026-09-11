@@ -50,6 +50,20 @@ export default function Landing() {
             </Link>
           </div>
         </article>
+        <article className="panel portal">
+          <span className="letter-lg">Teammate version</span>
+          <h2>Malaysia Vehicle Registration wireframe</h2>
+          <p className="muted">
+            A separate dashboard built from the teammate ODP: Home,
+            Historical Data, and Prediction. Your original JPJ Insight
+            dashboard is unchanged.
+          </p>
+          <div className="hero-actions">
+            <Link className="btn" to="/friend">
+              Open teammate dashboard
+            </Link>
+          </div>
+        </article>
       </section>
     </>
   )

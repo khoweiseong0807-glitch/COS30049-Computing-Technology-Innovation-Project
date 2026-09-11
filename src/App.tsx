@@ -14,6 +14,10 @@ import DashIncome from './pages/dash/DashIncome'
 import DashStates from './pages/dash/DashStates'
 import DashOutlook from './pages/dash/DashOutlook'
 import DashEnergy from './pages/dash/DashEnergy'
+import FriendLayout from './friend-dashboard/FriendLayout'
+import FriendHome from './friend-dashboard/FriendHome'
+import FriendHistorical from './friend-dashboard/FriendHistorical'
+import FriendPrediction from './friend-dashboard/FriendPrediction'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Welcome from './pages/Welcome'
@@ -92,6 +96,11 @@ function AppRoutes() {
           }
         />
       </Route>
+      <Route path="/friend" element={<FriendLayout />}>
+        <Route index element={<FriendHome />} />
+        <Route path="historical" element={<FriendHistorical />} />
+        <Route path="prediction" element={<FriendPrediction />} />
+      </Route>
       <Route element={<RequireAuth />}>
         <Route path="/app" element={<StaffGate />}>
           <Route index element={<Navigate to="welcome" replace />} />
@@ -120,10 +129,12 @@ function AppRoutes() {
   )
 }
 
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
+
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <AppRoutes />
       </BrowserRouter>
     </AuthProvider>

@@ -1,0 +1,336 @@
+.friend-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: #f4f6f8;
+  color: #1e3a5f;
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+}
+
+.friend-shell h1,
+.friend-shell h2,
+.friend-shell h3 {
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  font-weight: 650;
+  color: #16324f;
+  margin: 0 0 0.4rem;
+}
+
+.friend-top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1rem 1.4rem 1.05rem;
+  border-bottom: 2px solid #1e3a5f;
+  background: #fff;
+}
+
+.friend-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.friend-brand strong {
+  display: block;
+  font-size: 1.15rem;
+}
+
+.friend-brand small,
+.friend-note,
+.friend-shell .muted {
+  color: #5b6d80;
+}
+
+.friend-back {
+  color: #1e3a5f;
+  border: 1.5px solid #1e3a5f;
+  background: #fff;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-decoration: none;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.friend-back:hover {
+  background: #1e3a5f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.22);
+}
+
+.friend-back:focus-visible {
+  outline: 2px solid #1e3a5f;
+  outline-offset: 3px;
+}
+
+.friend-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.3rem;
+  width: min(720px, 100%);
+  padding: 0.3rem;
+  background: #eef3f8;
+  border: 1.5px solid #1e3a5f;
+  border-radius: 14px;
+}
+
+.friend-nav a {
+  display: grid;
+  place-items: center;
+  min-height: 44px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: #1e3a5f;
+  padding: 0.5rem 0.7rem;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 650;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.friend-nav a:hover {
+  background: #dbe6f2;
+}
+
+.friend-nav a.on {
+  background: #1e3a5f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.28);
+}
+
+.friend-nav a:focus-visible {
+  outline: 2px solid #1e3a5f;
+  outline-offset: 2px;
+}
+
+.friend-main {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: 1.3rem 1.1rem 2.4rem;
+  flex: 1;
+}
+
+.friend-intro {
+  border: 1.5px solid #1e3a5f;
+  background: #fff;
+  padding: 1.1rem 1.15rem;
+  margin-bottom: 1rem;
+  line-height: 1.55;
+}
+
+.friend-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.friend-kpi,
+.friend-card {
+  border: 1.5px solid #1e3a5f;
+  background: #fff;
+  padding: 0.95rem 1rem;
+}
+
+.friend-kpi strong {
+  display: block;
+  font-size: 1.55rem;
+  margin: 0.25rem 0;
+}
+
+.friend-filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+  align-items: end;
+}
+
+.friend-filters label {
+  display: grid;
+  gap: 0.28rem;
+  font-size: 0.8rem;
+  color: #5b6d80;
+}
+
+.friend-filters select,
+.friend-filters input,
+.friend-criteria input {
+  border: 1.5px solid #1e3a5f;
+  background: #fff;
+  color: #16324f;
+  padding: 0.5rem 0.55rem;
+  font: inherit;
+  min-height: 42px;
+}
+
+.friend-reset,
+.friend-action,
+.friend-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #1e3a5f;
+  background: #fff;
+  color: #1e3a5f;
+  padding: 0.55rem 1rem;
+  min-height: 44px;
+  font: inherit;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.friend-reset:hover,
+.friend-action:hover,
+.friend-close:hover {
+  background: #dbe6f2;
+}
+
+.friend-action-primary {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.friend-action-primary:hover {
+  background: #16324f;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(30, 58, 95, 0.28);
+}
+
+.friend-reset:focus-visible,
+.friend-action:focus-visible,
+.friend-close:focus-visible {
+  outline: 2px solid #1e3a5f;
+  outline-offset: 2px;
+}
+
+.friend-charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.friend-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.friend-enlarge {
+  border: 1.5px solid #1e3a5f;
+  background: #fff;
+  color: #1e3a5f;
+  font-size: 0.75rem;
+  font-weight: 650;
+  padding: 0.3rem 0.6rem;
+  min-height: 32px;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.friend-enlarge:hover {
+  background: #1e3a5f;
+  color: #fff;
+}
+
+.friend-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.friend-criteria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.friend-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 50, 79, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 20;
+}
+
+.friend-modal {
+  width: min(920px, 100%);
+  max-height: 90svh;
+  overflow: auto;
+  background: #fff;
+  border: 2px solid #1e3a5f;
+  padding: 1rem;
+}
+
+.friend-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.7rem;
+}
+
+.friend-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.friend-table th,
+.friend-table td {
+  border-bottom: 1px solid #c5d0db;
+  text-align: left;
+  padding: 0.45rem 0.3rem;
+}
+
+.friend-shell .chart-svg {
+  min-height: 180px;
+}
+
+.friend-footer {
+  padding: 0.9rem 1.4rem;
+  border-top: 1px solid #c5d0db;
+  color: #5b6d80;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 980px) {
+  .friend-kpis,
+  .friend-charts,
+  .friend-criteria,
+  .friend-filters {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .friend-nav {
+    width: 100%;
+  }
+
+  .friend-nav a {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.35rem;
+    white-space: normal;
+  }
+
+  .friend-brand {
+    flex-wrap: wrap;
+  }
+}
